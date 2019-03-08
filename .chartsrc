@@ -1,0 +1,8 @@
+{
+    "responsive": true,
+    "bezierCurve": false,
+    "showScale": false,
+    "legend": {
+        "position": "bottom"
+    }
+}

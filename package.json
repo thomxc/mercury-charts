@@ -1,0 +1,14 @@
+{
+  "name": "mercury-charts",
+  "dependencies": {
+    "chart.js": "^2.7",
+    "jquery": "^3.3"
+  },
+  "scripts": {
+    "build": "node src/build-dist.js"
+  },
+  "devDependencies": {
+    "lodash.merge": "^4.6.1"
+  },
+  "main": "src/mercury.js"
+}
