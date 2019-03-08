@@ -1,0 +1,20 @@
+{
+  "name": "thomxc/mercury-charts",
+  "type": "library",
+  "description": "Simple HTML5 charts using the canvas element.",
+  "keywords": [
+    "chart",
+    "js"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thomas Wiersema",
+      "email": "thomas.wiersema@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "minimum-stability": "stable"
+}
