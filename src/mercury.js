@@ -29,7 +29,7 @@ Mercury.requestChart = function (canvasElement, canvasCollection) {
 };
 Mercury.refreshCollection = function () {
     // recursively fetch and build charts
-    var canvasCollection = jQuery('canvas').toArray();
+    var canvasCollection = jQuery('canvas[data-chart-autoload!="false"]').toArray();
     if (canvasCollection.length > 0) {
         canvasCollection.reverse();
         var firstCanvasElement = canvasCollection.pop();
