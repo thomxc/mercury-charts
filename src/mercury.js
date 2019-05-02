@@ -55,6 +55,13 @@ Mercury.createLineChart = function (canvasElement, data) {
             options[i] = eval(events[i]);
         }
     }
+    
+    if (canvasElement.dataset.chartTooltip) {
+        var tooltips = JSON.parse(canvasElement.dataset.chartTooltip);
+        for (var i in tooltips) {
+            options['tooltips']['callbacks'][i] = eval(tooltips[i]);
+        }
+    }
     var chart = new Chart(ctx, {
         type: 'line',
         data: data,
