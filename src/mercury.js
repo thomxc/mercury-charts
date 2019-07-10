@@ -55,9 +55,11 @@ Mercury.refreshCollection = function () {
 
 Mercury.refreshChart = function (id) {
     // find chart
-    var firstCanvasElement = Mercury.findChartByElementId(id);
+    var canvasCollection = [];
+    // console.log(firstCanvasElement);
     // destroy and remove from collection
     Mercury.removeChartByElementId(id);
+    firstCanvasElement = jQuery('#' + id)[0];
     // request chart and re-add to collection
     if (firstCanvasElement.dataset.chartData == undefined) {
         Mercury.requestChart(firstCanvasElement, canvasCollection);
