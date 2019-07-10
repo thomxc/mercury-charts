@@ -12,6 +12,17 @@ Mercury.findChartByElementId = function (id) {
     }
 };
 
+Mercury.removeChartByElementId = function (id) {
+    var chart = Mercury.findChartByElementId(id);
+    for (var key in this.collection) {
+        if (this.collection[key].chart.canvas.id == id) {
+            this.collection.splice(key, 1);
+            chart.destroy();
+            return;
+        }
+    }
+};
+
 Mercury.requestChart = function (canvasElement, canvasCollection) {
     var chart;
     jQuery.ajax({
@@ -39,6 +50,19 @@ Mercury.refreshCollection = function () {
         } else {
             Mercury.createOfflineChart(firstCanvasElement, canvasCollection)
         }
+    }
+};
+
+Mercury.refreshChart = function (id) {
+    // find chart
+    var firstCanvasElement = Mercury.findChartByElementId(id);
+    // destroy and remove from collection
+    Mercury.removeChartByElementId(id);
+    // request chart and re-add to collection
+    if (firstCanvasElement.dataset.chartData == undefined) {
+        Mercury.requestChart(firstCanvasElement, canvasCollection);
+    } else {
+        Mercury.createOfflineChart(firstCanvasElement, canvasCollection)
     }
 };
 
