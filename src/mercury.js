@@ -28,6 +28,7 @@ Mercury.requestChart = function (canvasElement, canvasCollection) {
     });
 };
 Mercury.refreshCollection = function () {
+    Mercury.collection = [];
     // recursively fetch and build charts
     var canvasCollection = jQuery('canvas[data-chart-autoload!="false"]').toArray();
     if (canvasCollection.length > 0) {
