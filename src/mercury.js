@@ -211,16 +211,16 @@ Mercury.getNextChart = function (canvasElement, canvasCollection)
 Mercury.createOfflineChart = function (canvasElement, canvasCollection)
 {
     var backgroundColor;
-    if (canvasElement.dataset.chartBackgroundColor === undefined) {
-        backgroundColor = "rgba(45,109,163,1)";
+    if (canvasElement.dataset.chartBackgroundcolor === undefined) {
+        backgroundColor = ["rgba(45,109,163,1)"];
     } else {
-        backgroundColor = canvasElement.dataset.chartBackgroundColor;
+        backgroundColor = canvasElement.dataset.chartBackgroundcolor;
     }
     var data = {
         labels: JSON.parse(canvasElement.dataset.chartLabels),
         datasets: [{
             data: JSON.parse(canvasElement.dataset.chartData),
-            backgroundColor: backgroundColor
+            backgroundColor: JSON.parse(backgroundColor)
         }]
     };
     var chart = Mercury.createChart(canvasElement, data);
