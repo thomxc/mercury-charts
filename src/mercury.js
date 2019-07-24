@@ -119,6 +119,28 @@ Mercury.createBarChart = function (canvasElement, data) {
     return chart;
 };
 
+Mercury.createGroupedBarChart = function (canvasElement, data) {
+    var options = JSON.parse(canvasElement.dataset.chartOptions);
+    let dataset = [];
+
+    var ctx = canvasElement.getContext("2d");
+    if (canvasElement.dataset.chartEvents) {
+        var events = JSON.parse(canvasElement.dataset.chartEvents);
+        for (var i in events) {
+            options[i] = eval(events[i]);
+        }
+    }
+    dataset['datasets'] = data['datasets'][0]['data'];
+    dataset['labels'] = data['labels'];
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: dataset,
+        options: options
+    });
+    return chart;
+};
+
 Mercury.createRadarChart = function (canvasElement, data) {
     var options = JSON.parse(canvasElement.dataset.chartOptions);
 
@@ -193,6 +215,8 @@ Mercury.createChart = function (canvasElement, data)
         case 'polar':
             chart = Mercury.createPolarChart(canvasElement, data);
             break;
+        case "groupedBar":
+            chart = Mercury.createGroupedBarChart(canvasElement, data);
     }
     return chart;
 };
@@ -211,16 +235,16 @@ Mercury.getNextChart = function (canvasElement, canvasCollection)
 Mercury.createOfflineChart = function (canvasElement, canvasCollection)
 {
     var backgroundColor;
-    if (canvasElement.dataset.chartBackgroundcolor === undefined) {
-        backgroundColor = ["rgba(45,109,163,1)"];
+    if (canvasElement.dataset.chartBackgroundColor === undefined) {
+        backgroundColor = "rgba(45,109,163,1)";
     } else {
-        backgroundColor = canvasElement.dataset.chartBackgroundcolor;
+        backgroundColor = canvasElement.dataset.chartBackgroundColor;
     }
     var data = {
         labels: JSON.parse(canvasElement.dataset.chartLabels),
         datasets: [{
             data: JSON.parse(canvasElement.dataset.chartData),
-            backgroundColor: JSON.parse(backgroundColor)
+            backgroundColor: backgroundColor
         }]
     };
     var chart = Mercury.createChart(canvasElement, data);
