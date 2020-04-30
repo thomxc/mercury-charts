@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "chart.js": "^2.7",
-    "jquery": "^3.3"
+    "jquery": "^3.5"
   },
   "scripts": {
     "build": "node src/build-dist.js"
